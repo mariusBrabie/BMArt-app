@@ -67,27 +67,27 @@ main {
   z-index: 1;
 }
 
+.carousel-caption h3,
 .carousel-indicators li {
-  background-color: rgb(21, 140, 186);
-}
-
-.carousel-caption h3 {
-  color: rgb(0, 110, 153);
+  color: white;
 }
 
 .carousel img {
-  height: 400px;
-  padding: 40px;
-  margin-top: 50px;
+  height: 320px;
+  padding: 30px;
+  margin-top: 40px;
   margin-bottom: 30px;
+  border-radius: 5rem;
 }
 
 .carousel a {
   margin: 0 auto;
 }
 
-.carousel-item {
+.carousel-inner {
+  border-radius: 0.5rem;
   margin-top: 20px;
+  background-color: rgba(21, 140, 186, 0.5);
 }
 
 .pagination {
