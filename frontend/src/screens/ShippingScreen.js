@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import FormContainer from '../components/FormContainer'
 import { saveShippingAddress } from '../actions/cartActions'
 import CheckoutSteps from '../components/CheckoutSteps'
+import Message from '../components/Message'
 
 const ShippingScreen = ({ history }) => {
   const cart = useSelector(state => state.cart)
@@ -14,16 +15,28 @@ const ShippingScreen = ({ history }) => {
   const [city, setCity] = useState(shippingAddress.city)
   const [postalCode, setPostalCode] = useState(shippingAddress.postalCode)
   const [country, setCountry] = useState(shippingAddress.country)
+  const [message, setMessage] = useState(null)
 
   const submitHandler = e => {
     e.preventDefault()
-    dispatch(saveShippingAddress({ address, city, postalCode, country }))
-    history.push('/placeorder')
+    if (
+      !address.trim() ||
+      !city.trim() ||
+      !postalCode.trim() ||
+      !country.trim()
+    ) {
+      setMessage('Toate campurile sunt obligatorii!')
+    } else {
+      setMessage(null)
+      dispatch(saveShippingAddress({ address, city, postalCode, country }))
+      history.push('/placeorder')
+    }
   }
 
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 />
+      {message && <Message variant='danger'>{message}</Message>}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='address'>
           <Form.Label>Adresa</Form.Label>
