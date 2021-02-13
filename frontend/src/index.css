@@ -1,0 +1,147 @@
+header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  opacity: 1;
+}
+
+.contact-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  font-size: 1.1rem;
+  border-width: 0;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
+  padding: 0 0.5rem;
+}
+
+.navbar-expand a.nav-link,
+.navbar-brand,
+.navbar-brand:hover {
+  color: #eee;
+}
+
+.navbar-text {
+  padding: 0;
+}
+
+main {
+  min-height: 85vh;
+}
+
+.navbar {
+  padding: 0;
+  font-size: 1rem;
+  background-color: transparent;
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+}
+
+.product-name {
+  color: rgb(0, 110, 153);
+}
+
+.rating {
+  color: rgb(230, 174, 90);
+}
+
+/* carousel */
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+  display: flex;
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 0;
+}
+
+.carousel {
+  z-index: 1;
+}
+
+.carousel-indicators li {
+  background-color: rgb(21, 140, 186);
+}
+
+.carousel-caption h3 {
+  color: rgb(0, 110, 153);
+}
+
+.carousel img {
+  height: 400px;
+  padding: 40px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.carousel a {
+  margin: 0 auto;
+}
+
+.carousel-item {
+  margin-top: 20px;
+}
+
+.pagination {
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.product-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-img-top {
+  height: 250px;
+}
+
+.prod-card {
+  height: 300px;
+}
+
+.prod-card:hover {
+  border-color: rgb(21, 140, 186);
+}
+
+.social {
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.social-icon {
+  color: grey;
+}
+
+.social-icon:hover {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.shown:hover + .hidden {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: white;
+  z-index: 1;
+  background-color: rgba(0, 110, 153, 0.85);
+  border: solid rgb(0, 110, 153) 1px;
+  border-radius: 0.5rem;
+  position: relative;
+  bottom: 80px;
+  left: 190px;
+  height: 65px;
+}
