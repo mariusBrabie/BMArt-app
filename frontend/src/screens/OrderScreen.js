@@ -62,7 +62,7 @@ const OrderScreen = ({ match, location }) => {
               ) : (
                 <ListGroup variant='flush'>
                   {order.orderItems.map(item => (
-                    <ListGroup.Item key={item._id}>
+                    <ListGroup.Item key={item.productId}>
                       <Row>
                         <Col md={1}>
                           <Image
@@ -73,7 +73,9 @@ const OrderScreen = ({ match, location }) => {
                           />
                         </Col>
                         <Col>
-                          <Link to={`/products/${item.id}`}>{item.name}</Link>
+                          <Link to={`/products/${item.productId}`}>
+                            {item.name}
+                          </Link>
                         </Col>
                         <Col md={4}>
                           {item.qty} x {item.price} lei ={' '}
