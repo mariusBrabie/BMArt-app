@@ -33,11 +33,9 @@ const CartScreen = ({ history }) => {
           <h5 className=' pt-3'>
             <p>Cosul de cumparaturi este gol</p>
           </h5>
-          <Button variant='secondary'>
-            <Link to='/' style={{ color: 'black', lineHeight: '100%' }}>
-              Incepe cumparaturile
-            </Link>
-          </Button>
+          <Link to='/' style={{ color: 'black', lineHeight: '100%' }}>
+            <Button variant='secondary'>Incepe cumparaturile</Button>
+          </Link>
         </div>
       ) : (
         <>
