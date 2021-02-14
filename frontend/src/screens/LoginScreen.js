@@ -10,6 +10,7 @@ import FormContainer from '../components/FormContainer'
 const LoginScreen = ({ location, history }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [message, setMessage] = useState(null)
 
   const dispatch = useDispatch()
 
@@ -26,13 +27,19 @@ const LoginScreen = ({ location, history }) => {
 
   const onSubmitHandler = e => {
     e.preventDefault()
-    dispatch(login(email, password))
+    if (!email || !password) {
+      setMessage('Toate campurile sunt obligatorii!')
+    } else {
+      setMessage(null)
+      dispatch(login(email, password))
+    }
   }
 
   return (
     <FormContainer>
       <p className='pt-5'></p>
-      {error && <Message variant='danger'>{error}</Message>}
+      {message && <Message variant='danger'>{message}</Message>}
+      {error && !message && <Message variant='danger'>{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={onSubmitHandler}>
         <Form.Group controlId='email'>
