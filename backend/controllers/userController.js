@@ -29,7 +29,7 @@ export const authUser = asyncHandler(async (req, res) => {
 export const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body
 
-  if (!password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)) {
+  if (!password.match(/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}/)) {
     res.status(400)
     throw new Error(
       'Parola trebuie sa aiba minim 8 caractere, sa contina cel putin o litera mica, o litera mare si o cifra!'

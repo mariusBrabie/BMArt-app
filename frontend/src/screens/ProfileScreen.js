@@ -43,7 +43,7 @@ const ProfileScreen = ({ location, history }) => {
   const onSubmitHandler = e => {
     if (
       password &&
-      !password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)
+      !password.match(/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}/)
     ) {
       e.preventDefault()
       setMessage(
