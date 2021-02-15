@@ -13,6 +13,7 @@ const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [message, setMessage] = useState(null)
+  //const [updateMessage, setUpdateMessage] = useState(null)
 
   const dispatch = useDispatch()
 
@@ -40,18 +41,33 @@ const ProfileScreen = ({ location, history }) => {
   }, [dispatch, history, userInfo, user.name, user.email])
 
   const onSubmitHandler = e => {
-    if (password !== confirmPassword) {
+    if (
+      password &&
+      !password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)
+    ) {
       e.preventDefault()
-      setMessage('Parola nu este confirmata')
-    } else {
-      dispatch(
-        updateUserProfile({
-          id: user._id,
-          name,
-          email,
-          password
-        })
+      setMessage(
+        'Parola trebuie sa aiba minim 8 caractere, sa contina cel putin o litera mica, o litera mare si o cifra!'
       )
+    } else {
+      if (password !== confirmPassword) {
+        e.preventDefault()
+        setMessage('Parola nu este confirmata')
+      } else {
+        // setPassword('')
+        // setConfirmPassword('')
+        setMessage(null)
+        dispatch(
+          updateUserProfile({
+            id: user._id,
+            name,
+            email,
+            password
+          })
+        )
+        //setUpdateMessage('Profilul a fost updatat!')
+        //setTimeout(() => setUpdateMessage(null), 3500)
+      }
     }
   }
 
@@ -60,7 +76,12 @@ const ProfileScreen = ({ location, history }) => {
       <Col md={3}>
         <h4 className='pt-5'>Profil</h4>
         {message && <Message variant='danger'>{message}</Message>}
-        {error && <Message variant='danger'>{error}</Message>}
+        {error && !message && <Message variant='danger'>{error}</Message>}
+        {
+          //   updateMessage && !error && (
+          //   <Message variant='success'>{updateMessage}</Message>
+          // )
+        }
         {loading && <Loader />}
         <Form onSubmit={onSubmitHandler}>
           <Form.Group controlId='name'>

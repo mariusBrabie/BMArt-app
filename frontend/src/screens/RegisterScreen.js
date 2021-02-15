@@ -30,19 +30,24 @@ const RegisterScreen = ({ location, history }) => {
   const onSubmitHandler = e => {
     e.preventDefault()
 
-    if (password !== confirmPassword) {
-      setMessage('Parola nu este confirmata!')
+    if (!name || !email || !password || !confirmPassword) {
+      setMessage('Toate campurile sunt obligatorii!')
     } else {
-      dispatch(register(name, email, password))
       setMessage(null)
+      if (password !== confirmPassword) {
+        setMessage('Parola nu este confirmata!')
+      } else {
+        dispatch(register(name, email, password))
+        setMessage(null)
+      }
     }
   }
 
   return (
     <FormContainer>
       <p className='pt-5'></p>
-      {error && !message && <Message variant='danger'>{error}</Message>}
       {message && <Message variant='danger'>{message}</Message>}
+      {error && !message && <Message variant='danger'>{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={onSubmitHandler}>
         <Form.Group controlId='name'>
